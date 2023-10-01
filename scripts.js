@@ -69,9 +69,18 @@ function game() {
         // get computer value
         let computerSelection = getComputerChoice();
         // play the round and keep the score
-        playerScore += singleRound(playerSelection, computerSelection);
+        let result = singleRound(playerSelection, computerSelection);
+        if (result === 1) {
+            console.log("You win this round");
+        } else if (result === 0) {
+            console.log("Draw for this round");
+        } else {
+            console.log("You lose this round");
+        }
+        // add the score to playerScore
+        playerScore += result;
     }
-    
+
     // compare the values
     if (playerScore > 0) {
         return "Player Win!";
