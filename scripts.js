@@ -15,8 +15,6 @@ function getComputerChoice() {
 
 }
 
-
-
 function singleRound(playerSelection, computerSelection) {
     // turn both strings to lowercase
     lowerCasePlayer = playerSelection.toLowerCase();
@@ -53,10 +51,6 @@ function singleRound(playerSelection, computerSelection) {
     }
     
 }
-// Testing the singleRound function
-// const playerSelection = 'rock';
-// const computerSelection = getComputerChoice();
-// console.log(singleRound(playerSelection, computerSelection));
 
 function game() {
     // set up the scores
@@ -71,11 +65,11 @@ function game() {
         // play the round and keep the score
         let result = singleRound(playerSelection, computerSelection);
         if (result === 1) {
-            console.log("You win this round");
+            console.log(`You win this round. Player: ${playerSelection} / Computer: ${computerSelection}`);
         } else if (result === 0) {
-            console.log("Draw for this round");
+            console.log(`Draw for this round.Player: ${playerSelection} / Computer: ${computerSelection}`);
         } else {
-            console.log("You lose this round");
+            console.log(`You lose this round. Player: ${playerSelection} / Computer: ${computerSelection}`);
         }
         // add the score to playerScore
         playerScore += result;
