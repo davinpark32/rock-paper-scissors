@@ -22,31 +22,22 @@ function singleRound(playerSelection, computerSelection) {
     // compare two values
     // return a string declaring the winner
     if (lowerCasePlayer === 'rock' && lowerCaseComp ==='scissors') {
-        // return 'You Win! Rock beats Scissors.';
         return 1
     } else if (lowerCasePlayer === 'rock' && lowerCaseComp ==='paper' ) {
-        // return 'You Lose! Paper beats Rock.';
         return -1
     } else if (lowerCasePlayer ==='rock' && lowerCaseComp === 'rock') {
-        // return 'Draw!'
         return 0
     } else if (lowerCasePlayer === 'paper' && lowerCaseComp ==='scissors') {
-        // return 'You Lose! Scissors beats Paper.';
         return -1
     } else if (lowerCasePlayer === 'paper' && lowerCaseComp ==='paper' ) {
-        // return 'Draw!';
         return 0
     } else if (lowerCasePlayer ==='paper' && lowerCaseComp === 'rock') {
-        // return 'You Win! Paper beats Rock.'
         return 1
     } else if (lowerCasePlayer === 'scissors' && lowerCaseComp ==='scissors') {
-        // return 'Draw!';
         return 0
     } else if (lowerCasePlayer === 'scissors' && lowerCaseComp ==='paper' ) {
-        // return 'You Win! Scissors beats Paper.';
         return 1
     } else if (lowerCasePlayer ==='scissors' && lowerCaseComp === 'rock') {
-        // return 'You Lose! Rock beats Scissors.'
         return -1
     }
     
