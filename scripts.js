@@ -77,4 +77,21 @@ function game() {
 }
 // report the winner
 
-console.log(game());
+// Logic that plays 5 games
+// console.log(game());
+
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+
+rockBtn.addEventListener('click', () => {
+    console.log(singleRound('rock', getComputerChoice()));
+});
+
+paperBtn.addEventListener('click', () => {
+    console.log(singleRound('paper', getComputerChoice()));
+});
+
+scissorsBtn.addEventListener('click', () => {
+    console.log(singleRound('scissors', getComputerChoice()));
+});
