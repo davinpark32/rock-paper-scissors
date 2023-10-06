@@ -83,15 +83,27 @@ function game() {
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
+let displayResult = document.querySelector('#result');
+
+function changeResult(result) {
+    if (result === 1) {
+        displayResult.textContent = 'You won!';
+    } else if (result === 0) {
+        displayResult.textContent = 'Draw!';
+    } else {
+        displayResult.textContent = 'You Lose!';
+    }
+}
 
 rockBtn.addEventListener('click', () => {
-    console.log(singleRound('rock', getComputerChoice()));
+    let result = singleRound('rock', getComputerChoice());
+    changeResult(result);
 });
 
 paperBtn.addEventListener('click', () => {
-    console.log(singleRound('paper', getComputerChoice()));
+    changeResult(result);
 });
 
 scissorsBtn.addEventListener('click', () => {
-    console.log(singleRound('scissors', getComputerChoice()));
+    changeResult(result);
 });
