@@ -43,52 +43,6 @@ function singleRound(playerSelection, computerSelection) {
     
 }
 
-function game() {
-    // set up the scores
-    let playerScore = 0;
-
-    // play 5 rounds of single games
-    for (i=0; i < 5; i++) {
-        // ask the user for value
-        // let playerSelection = prompt("Rock, Paper, or Scissors?");
-        // get computer value
-        // let computerSelection = getComputerChoice();
-        // play the round and keep the score
-        
-        let result = singleRound(playerSelection, getComputerChoice());
-        if (result === 1) {
-            console.log(`You win this round. Player: ${playerSelection} / Computer: ${computerSelection}`);
-        } else if (result === 0) {
-            console.log(`Draw for this round.Player: ${playerSelection} / Computer: ${computerSelection}`);
-        } else {
-            console.log(`You lose this round. Player: ${playerSelection} / Computer: ${computerSelection}`);
-        }
-        // add the score to playerScore
-        playerScore += result;
-    }
-
-    // compare the values
-    if (playerScore > 0) {
-        return "Player Win!";
-    } else if (playerScore < 0) {
-        return "Computer Win!";
-    } else {
-        return "Draw!";
-    }
-}
-// report the winner
-
-// Logic that plays 5 games
-// console.log(game());
-
-const rockBtn = document.querySelector('#rock');
-const paperBtn = document.querySelector('#paper');
-const scissorsBtn = document.querySelector('#scissors');
-const menu = document.querySelector('#menu');
-let displayResult = document.querySelector('#result');
-let displayScore = document.querySelector('#score');
-let displayFinal = document.querySelector('#final');
-
 // Notify result
 function changeResult(result) {
     if (result === 1) {
@@ -101,10 +55,18 @@ function changeResult(result) {
 }
 
 
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+const menu = document.querySelector('#menu');
+let displayResult = document.querySelector('#result');
+let displayScore = document.querySelector('#score');
+let displayFinal = document.querySelector('#final');
 
 
 let gameResult = 0;
 let playerScore = 0;
+let computerScore = 0;
 menu.addEventListener('click', (event) => {
     let target = event.target;
     switch(target.id) {
@@ -121,7 +83,14 @@ menu.addEventListener('click', (event) => {
             changeResult(gameResult);
             break;
     }
-    displayScore.textContent= `Your score is ${playerScore+=gameResult}`;
+    
+    if (gameResult===1) {
+        playerScore++;
+    } else if (gameResult === -1) {
+        computerScore++;
+    }
+    displayScore.textContent = `${playerScore}, ${computerScore}`;
+
     if (playerScore === 5) {
         displayFinal.textContent = 'PLAYER WIN!';
     } else if (playerScore === -5) {
