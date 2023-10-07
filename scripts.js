@@ -50,11 +50,12 @@ function game() {
     // play 5 rounds of single games
     for (i=0; i < 5; i++) {
         // ask the user for value
-        let playerSelection = prompt("Rock, Paper, or Scissors?");
+        // let playerSelection = prompt("Rock, Paper, or Scissors?");
         // get computer value
-        let computerSelection = getComputerChoice();
+        // let computerSelection = getComputerChoice();
         // play the round and keep the score
-        let result = singleRound(playerSelection, computerSelection);
+        
+        let result = singleRound(playerSelection, getComputerChoice());
         if (result === 1) {
             console.log(`You win this round. Player: ${playerSelection} / Computer: ${computerSelection}`);
         } else if (result === 0) {
@@ -83,27 +84,47 @@ function game() {
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
+const menu = document.querySelector('#menu');
 let displayResult = document.querySelector('#result');
+let displayScore = document.querySelector('#score');
+let displayFinal = document.querySelector('#final');
 
+// Notify result
 function changeResult(result) {
     if (result === 1) {
-        displayResult.textContent = 'You won!';
+        displayResult.textContent = 'You win this round!';
     } else if (result === 0) {
-        displayResult.textContent = 'Draw!';
+        displayResult.textContent = 'Draw for this round!';
     } else {
-        displayResult.textContent = 'You Lose!';
+        displayResult.textContent = 'You lose this round!';
     }
 }
 
-rockBtn.addEventListener('click', () => {
-    let result = singleRound('rock', getComputerChoice());
-    changeResult(result);
-});
 
-paperBtn.addEventListener('click', () => {
-    changeResult(result);
-});
 
-scissorsBtn.addEventListener('click', () => {
-    changeResult(result);
-});
+
+let gameResult = 0;
+let playerScore = 0;
+menu.addEventListener('click', (event) => {
+    let target = event.target;
+    switch(target.id) {
+        case 'rock':
+            gameResult = singleRound('rock', getComputerChoice());
+            changeResult(gameResult);
+            break;
+        case 'paper':
+            gameResult = singleRound('paper', getComputerChoice());
+            changeResult(gameResult);
+            break;
+        case 'scissors':
+            gameResult = singleRound('scissors', getComputerChoice());
+            changeResult(gameResult);
+            break;
+    }
+    displayScore.textContent= `Your score is ${playerScore+=gameResult}`;
+    if (playerScore === 5) {
+        displayFinal.textContent = 'PLAYER WIN!';
+    } else if (playerScore === -5) {
+        displayFinal.textContent = 'COMPUTER WIN!';
+    }
+})
