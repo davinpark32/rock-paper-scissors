@@ -93,7 +93,7 @@ menu.addEventListener('click', (event) => {
 
     if (playerScore === 5) {
         displayFinal.textContent = 'PLAYER WIN!';
-    } else if (playerScore === -5) {
+    } else if (computerScore === 5) {
         displayFinal.textContent = 'COMPUTER WIN!';
     }
 })
